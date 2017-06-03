@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="create"/>
+        <Button
+            android:id="@+id/btn_mypage"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="mypage"/>
+        <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="logout"/>
+    </LinearLayout>
+
+</LinearLayout>
