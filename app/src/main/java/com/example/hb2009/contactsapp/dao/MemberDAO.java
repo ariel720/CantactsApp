@@ -1,12 +1,14 @@
 package com.example.hb2009.contactsapp.dao;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.hb2009.contactsapp.domain.Member;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.hb2009.contactsapp.domain.Constants.DB_NAME;
@@ -93,9 +95,46 @@ public class MemberDAO extends SQLiteOpenHelper{
         return 0;
 
     };
-    public List<Member> getMembers(int total){
+    public String existeMember(String email,String password){
 
-        return null;
+        String sql =  String.format("SELECT COUNT(*) FROM %s WHERE %s = '%s' and %s = '%s'",MEMBER_TABLE,MEMBER_EMAIL,email,MEMBER_PASSWORD,password);
+        Cursor cursor = this.getReadableDatabase().rawQuery(sql,null);
+
+        String result = "";
+        if(cursor.moveToNext()){
+            result = cursor.getString(0);
+        }
+
+        Log.d("좋아요",result);
+
+        return result;
+    };
+
+    public List<Member> getMembers(){
+
+        String sql =  String.format("SELECT * FROM %s",MEMBER_TABLE);
+        Cursor cursor = this.getReadableDatabase().rawQuery(sql,null);
+
+        List<Member> list = new ArrayList<Member>();
+        Member m = null;
+
+        if(cursor != null) {
+            while (cursor.moveToNext()) {
+                m = new Member();
+                m.setName(cursor.getString(cursor.getColumnIndex(MEMBER_NAME)));
+                m.setPassword(cursor.getString(cursor.getColumnIndex(MEMBER_PASSWORD)));
+                m.setEmail(cursor.getString(cursor.getColumnIndex(MEMBER_EMAIL)));
+                m.setAddress(cursor.getString(cursor.getColumnIndex(MEMBER_ADDRESS)));
+                m.setPhone(cursor.getString(cursor.getColumnIndex(MEMBER_PHONE)));
+                m.setPhoto(cursor.getString(cursor.getColumnIndex(MEMBER_PHOTO)));
+              //  m.setSeq(Integer.parseInt(cursor.getString(cursor.getColumnIndex(MEMBER_SEQ))));
+                Log.d("디에이오",m.getName().toString());
+                list.add(m);
+            }
+        }else{
+            Log.d("없어","없다구");
+        }
+        return list;
 
     };
 

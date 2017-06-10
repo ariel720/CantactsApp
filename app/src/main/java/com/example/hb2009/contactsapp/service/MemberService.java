@@ -12,12 +12,13 @@ import java.util.List;
 
 public interface MemberService {
 
-    public void createDB(Context context);
+   // public void createDB(Context context);
 
     public void createMember(Member member);
     public Member getMember(int seq);
     public void removeMember(Member member);
     public void modifyMember(int seq);
+    public String existMember(String email,String password);
     public int countMembers();
-    public List<Member> getMembers(int total);
+    public List<Member> getMembers();
 }
