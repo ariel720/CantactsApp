@@ -1,5 +1,7 @@
 package com.example.hb2009.contactsapp.service;
 
+import android.content.Context;
+
 import com.example.hb2009.contactsapp.domain.Member;
 
 import java.util.List;
@@ -9,6 +11,9 @@ import java.util.List;
  */
 
 public interface MemberService {
+
+    public void createDB(Context context);
+
     public void createMember(Member member);
     public Member getMember(int seq);
     public void removeMember(Member member);

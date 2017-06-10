@@ -2,15 +2,15 @@ package com.example.hb2009.contactsapp.domain;
 
 /**
  * Created by hb2009 on 2017-06-03.
- * CREATE TABLE Member
+ * CREATE TABLE IF NOT EXIST Member
      (
-     seq int,
-     name varchar(20),
-     password varchar(10),
-     email varchar(30),
-    phone varchar(20),
-    address varchar(300),
-    photo varchar(300)
+     seq INTEGER AUTO_INCREMENT,
+     name TEXT,
+     password TEXT,
+     email TEXT,
+    phone TEXT,
+    address TEXT,
+    photo TEXT
      );
  */
 //bean 객체

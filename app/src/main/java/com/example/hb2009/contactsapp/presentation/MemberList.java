@@ -33,7 +33,7 @@ public class MemberList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MemberList.this, MainActivity.class));
-
+                finish();
             }
         });
     }

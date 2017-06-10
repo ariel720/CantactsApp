@@ -1,5 +1,8 @@
 package com.example.hb2009.contactsapp.service;
 
+import android.content.Context;
+
+import com.example.hb2009.contactsapp.dao.MemberDAO;
 import com.example.hb2009.contactsapp.domain.Member;
 
 import java.util.List;
@@ -9,6 +12,13 @@ import java.util.List;
  */
 
 public class MemberServiceImpl implements MemberService {
+
+    MemberDAO memberDAO;
+
+    @Override
+    public void createDB(Context context) {
+        memberDAO = new MemberDAO(context);
+    }
 
     @Override
     public void createMember(Member member) {
